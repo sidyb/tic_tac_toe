@@ -88,10 +88,26 @@ def updateBoard(board: List[List[str]], marker: str, position: int) -> List[List
     boardSize = len(board)
     row = (position-1) // boardSize
     col = (position-1) % boardSize
-    print(row, col)
     if board[row][col] == '-':
         board[row][col] = marker
     return board
+
+def playerMove(board: List[List[str]], marker: str) -> int:
+    """
+    Asks the player to make a move and returns the position on the board.
+
+    parameters:
+    - board: The game board
+    - marker: The marker to be placed on the board
+    """
+    position = ''
+    while position.isnumeric() == False:
+        displayPositions(board)
+        position = input('What position you want to mark?[int]: ')
+        if position.isnumeric() == False:
+            print('Invalid input. Please enter a number')
+            continue
+    return int(position)
 
 def displayBoard(board: List[List[str]]) -> None:
     """
